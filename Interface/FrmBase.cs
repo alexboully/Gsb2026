@@ -35,7 +35,6 @@ namespace Interface
         {
             // s'il ne reste qu'un formulaire en mémoire, cela signifie que l'utilisateur a fermé l'application
             // il faut alors quitter le thread de l'application pour éviter que le formulaire parent reste ouvert en arrière-plan
-            
             if (Application.OpenForms.Count == 1)
             {
                 Application.ExitThread();
@@ -49,12 +48,12 @@ namespace Interface
 
         private void programmerRendezVous_Click(object sender, EventArgs e)
         {
-             ouvrirFormulaire(new FrmVisiteAjout(session));
+            ouvrirFormulaire(new FrmVisiteAjout(session));
         }
 
         private void modifierRendezVous_Click(object sender, EventArgs e)
         {
-             ouvrirFormulaire(new FrmVisiteModification(session));
+            ouvrirFormulaire(new FrmVisiteModification(session));
         }
 
         private void imprimerRendezvous_Click(object sender, EventArgs e)
@@ -96,16 +95,15 @@ namespace Interface
         /// </summary>
         private void ouvrirFormulaire(Form frm)
         {
+            frm.Show();
+
             if (this is FrmMenu)
             {
                 this.Hide();
-            }
-            else
+            } else
             {
                 this.Close();
             }
-            frm.Show();
-
         }
 
         private void parametrerComposant()
