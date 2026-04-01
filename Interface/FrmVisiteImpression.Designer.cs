@@ -1,4 +1,6 @@
-﻿namespace Interface
+﻿/*
+
+namespace Interface
 {
     partial class FrmVisiteImpression
     {
@@ -196,3 +198,5 @@
         private PrintPreviewDialog printPreviewDialog1;
     }
 }
+
+*/

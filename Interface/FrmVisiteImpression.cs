@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-
+/*
 namespace Interface
 {
+    
     public partial class FrmVisiteImpression : FrmBase
     {
-        // 3. Les données manipulées
         private List<Visite> lesVisites;
 
         public FrmVisiteImpression(Session uneSession) : base(uneSession)
@@ -214,4 +214,6 @@ namespace Interface
 
         #endregion
     }
+    
 }
+*/

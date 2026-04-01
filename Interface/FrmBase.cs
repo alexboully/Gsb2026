@@ -68,7 +68,7 @@ namespace Interface
 
         private void consulterVisite_Click(object sender, EventArgs e)
         {
-            // ouvrirFormulaire(new FrmVisiteConsultation(session));
+            ouvrirFormulaire(new FrmConsultationVisite(session));
         }
 
         private void listePraticien_Click(object sender, EventArgs e)
