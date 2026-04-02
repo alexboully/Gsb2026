@@ -44,21 +44,6 @@ namespace Interface
             afficherVisite();
         }
 
-        private void remplirDgv()
-        {
-            dgvVisites.Rows.Clear();
-            var visites = session.MesVisites.OrderBy(v => v.DateEtHeure);
-
-            foreach (Visite v in visites)
-            {
-                dgvVisites.Rows.Add(
-                    v,
-                    v.DateEtHeure.ToShortDateString(),
-                    v.DateEtHeure.ToShortTimeString(),
-                    v.LePraticien.Ville
-                );
-            }
-        }
 
         private void afficherVisite()
         {
@@ -186,15 +171,15 @@ namespace Interface
             if (dgvVisites.Rows.Count == 0 || dgvVisites.SelectedRows.Count == 0)
             {
                 ViderAffichage();
-            }
+            } 
         }
 
-        private void ViderAffichage()
+         private void ViderAffichage()
         {
             lblPraticien.Text = string.Empty;
             dgvEchantillon.Rows.Clear();
         }
-
+        
         private Visite? getVisite()
         {
             if (dgvVisites.SelectedRows.Count == 0) return null;
