@@ -1,14 +1,9 @@
 ﻿using Donnee;
 using Interface.Properties;
 using Metier;
-using Microsoft.VisualBasic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Interface
@@ -32,6 +27,7 @@ namespace Interface
             parametrerComposant();
             centrerFormulaire();
             remplirDgvVisites();
+            afficher();
         }
 
         private void FrmConsultationVisite_Resize(object sender, EventArgs e)
@@ -44,7 +40,6 @@ namespace Interface
             afficherVisite();
         }
 
-
         private void afficherVisite()
         {
             if (dgvVisites.SelectedRows.Count == 0) return;
@@ -53,6 +48,27 @@ namespace Interface
             if (v == null) return;
 
             lblPraticien.Text = v.LePraticien.NomPrenom;
+            lblRue.Text = v.LePraticien.Rue + ", " + v.LePraticien.CodePostal + " " + v.LePraticien.Ville;
+            lblTelephone.Text = v.LePraticien.Telephone;
+            lblEmail.Text = v.LePraticien.Email;
+            lblType.Text = v.LePraticien.Type?.Libelle ?? string.Empty;
+            lblSpecialite.Text = v.LePraticien.Specialite?.Libelle ?? string.Empty;
+
+            lblMotif.Text = "Motif     " + v.LeMotif.Libelle;
+            lblBilanContenu.Text = v.Bilan ?? string.Empty;
+
+            lstMedicament.Items.Clear();
+            if (v.PremierMedicament != null)
+                lstMedicament.Items.Add(v.PremierMedicament.Nom);
+            if (v.SecondMedicament != null)
+                lstMedicament.Items.Add(v.SecondMedicament.Nom);
+
+            // Remplissage échantillons uniquement
+            dgvEchantillon.Rows.Clear();
+            foreach (var e in v)
+            {
+                dgvEchantillon.Rows.Add(e.Key.Nom, e.Value);
+            }
         }
 
         private Visite? getVisiteSelectionnee()
@@ -63,7 +79,7 @@ namespace Interface
 
         #endregion
 
-        #region methodes
+        #region Methodes
 
         private void parametrerComposant()
         {
@@ -76,13 +92,37 @@ namespace Interface
         private void parametrerDgvEchantillons()
         {
             dgvEchantillon.Columns.Clear();
+            dgvEchantillon.Rows.Clear();
             dgvEchantillon.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEchantillon.MultiSelect = false;
             dgvEchantillon.AllowUserToAddRows = false;
             dgvEchantillon.ReadOnly = true;
-            dgvEchantillon.Columns.Add("Medicament", "Médicament");
-            dgvEchantillon.Columns.Add("Quantite", "Quantité");
-            dgvEchantillon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dgvEchantillon.BorderStyle = BorderStyle.FixedSingle;
+            dgvEchantillon.BackgroundColor = Color.White;
+            dgvEchantillon.RowHeadersVisible = false;
+            dgvEchantillon.EnableHeadersVisualStyles = false;
+            dgvEchantillon.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            dgvEchantillon.ColumnHeadersHeight = 30;
+            dgvEchantillon.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvEchantillon.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgvEchantillon.AllowUserToDeleteRows = false;
+
+            DataGridViewColumn col;
+
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "Nom";
+            col.HeaderText = "Nom";
+            dgvEchantillon.Columns.Add(col);
+
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "Quantite";
+            col.HeaderText = "Quantité";
+            dgvEchantillon.Columns.Add(col);
+
+            dgvEchantillon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            for (int i = 0; i < dgvEchantillon.ColumnCount; i++)
+                dgvEchantillon.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         private void parametrerDgv(DataGridView dgv)
@@ -90,71 +130,54 @@ namespace Interface
             dgv.Columns.Clear();
             dgv.Rows.Clear();
 
-            #region paramètrage visuel
             dgv.Enabled = true;
             dgv.BorderStyle = BorderStyle.FixedSingle;
             dgv.BackgroundColor = Color.White;
             dgv.ForeColor = Color.Black;
-            dgv.DefaultCellStyle.Font = new Font("Georgia", 11);
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.MultiSelect = false;
             dgv.AllowUserToDeleteRows = false;
             dgv.AllowUserToAddRows = false;
             dgv.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            #endregion
 
-            #region paramètrage Header
             dgv.ColumnHeadersVisible = true;
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgv.EnableHeadersVisualStyles = false;
-            DataGridViewCellStyle style = dgv.ColumnHeadersDefaultCellStyle;
-            style.BackColor = Color.WhiteSmoke;
-            style.Font = new Font("Georgia", 12, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
             dgv.ColumnHeadersHeight = 40;
             dgv.RowHeadersVisible = false;
-            #endregion
 
-            #region paramètrage des colonnes
             DataGridViewColumn col;
 
-            // Colonne 0 : objet Visite
             col = new DataGridViewTextBoxColumn();
             col.Name = "Visite";
             col.Visible = false;
             dgv.Columns.Add(col);
 
-            // Colonne 1 : Date
             col = new DataGridViewTextBoxColumn();
             col.Name = "Date";
             col.HeaderText = "Programmée le";
-            col.Width = 200;
             dgv.Columns.Add(col);
 
-            // Colonne 2 : Heure
             col = new DataGridViewTextBoxColumn();
             col.Name = "Heure";
             col.HeaderText = "à";
-            col.Width = 50;
             dgv.Columns.Add(col);
 
-            // Colonne 3 : Lieu
             col = new DataGridViewTextBoxColumn();
             col.Name = "Lieu";
             col.HeaderText = "sur";
-            col.Width = 200;
             dgv.Columns.Add(col);
 
             for (int i = 0; i < dgv.ColumnCount; i++)
                 dgv.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-            #endregion
         }
 
         private void remplirDgvVisites()
         {
             dgvVisites.Rows.Clear();
             foreach (Visite v in session.MesVisites
-                .Where(v => v.Bilan is null)
                 .OrderBy(v => v.DateEtHeure))
             {
                 dgvVisites.Rows.Add(
@@ -169,17 +192,23 @@ namespace Interface
         private void afficher()
         {
             if (dgvVisites.Rows.Count == 0 || dgvVisites.SelectedRows.Count == 0)
-            {
                 ViderAffichage();
-            } 
         }
 
-         private void ViderAffichage()
+        private void ViderAffichage()
         {
             lblPraticien.Text = string.Empty;
+            lblRue.Text = string.Empty;
+            lblTelephone.Text = string.Empty;
+            lblEmail.Text = string.Empty;
+            lblType.Text = string.Empty;
+            lblSpecialite.Text = string.Empty;
+            lblMotif.Text = "Motif";
+            lblBilanContenu.Text = string.Empty;
+            lstMedicament.Items.Clear();
             dgvEchantillon.Rows.Clear();
         }
-        
+
         private Visite? getVisite()
         {
             if (dgvVisites.SelectedRows.Count == 0) return null;

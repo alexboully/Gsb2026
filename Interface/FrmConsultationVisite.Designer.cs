@@ -2,212 +2,181 @@
 {
     partial class FrmConsultationVisite
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultationVisite));
             panelCentral = new Panel();
-            lstMedicament = new ListBox();
-            dgvEchantillon = new DataGridView();
-            lblBilan = new Label();
-            lblMotif = new Label();
-            panelPraticien = new Panel();
-            lblSpecialite = new Label();
-            lblType = new Label();
-            lblEmail = new Label();
-            lblTelephone = new Label();
-            lblRue = new Label();
-            lblPraticien = new Label();
             dgvVisites = new DataGridView();
+            panelDetail = new Panel();
+            panelPraticien = new Panel();
+            lblPraticien = new Label();
+            lblRue = new Label();
+            lblTelephone = new Label();
+            lblEmail = new Label();
+            lblType = new Label();
+            lblSpecialite = new Label();
+            lblMotif = new Label();
+            lblBilan = new Label();
+            lblBilanContenu = new Label();
+            dgvEchantillon = new DataGridView();
+            lstMedicament = new ListBox();
+
             panelCentral.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEchantillon).BeginInit();
+            panelDetail.SuspendLayout();
             panelPraticien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvVisites).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEchantillon).BeginInit();
             SuspendLayout();
-            // 
-            // lblTitre
-            // 
-            lblTitre.Size = new Size(800, 74);
-            lblTitre.Text = "Consultation des visites";
-            // 
+
             // panelCentral
-            // 
-            panelCentral.Controls.Add(lstMedicament);
-            panelCentral.Controls.Add(dgvEchantillon);
-            panelCentral.Controls.Add(lblBilan);
-            panelCentral.Controls.Add(lblMotif);
-            panelCentral.Controls.Add(panelPraticien);
-            panelCentral.Controls.Add(dgvVisites);
             panelCentral.Dock = DockStyle.Fill;
             panelCentral.Location = new Point(0, 98);
             panelCentral.Name = "panelCentral";
-            panelCentral.Size = new Size(800, 307);
+            panelCentral.Size = new Size(1100, 550);
             panelCentral.TabIndex = 13;
-            // 
-            // lstMedicament
-            // 
-            lstMedicament.FormattingEnabled = true;
-            lstMedicament.Location = new Point(243, 221);
-            lstMedicament.Name = "lstMedicament";
-            lstMedicament.Size = new Size(120, 79);
-            lstMedicament.TabIndex = 5;
-            // 
-            // dgvEchantillon
-            // 
-            dgvEchantillon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEchantillon.Location = new Point(568, 154);
-            dgvEchantillon.Name = "dgvEchantillon";
-            dgvEchantillon.Size = new Size(200, 117);
-            dgvEchantillon.TabIndex = 4;
-            // 
-            // lblBilan
-            // 
-            lblBilan.AutoSize = true;
-            lblBilan.Location = new Point(243, 130);
-            lblBilan.Name = "lblBilan";
-            lblBilan.Size = new Size(91, 15);
-            lblBilan.TabIndex = 3;
-            lblBilan.Text = "Bilan de la visite";
-            // 
-            // lblMotif
-            // 
-            lblMotif.AutoSize = true;
-            lblMotif.Location = new Point(243, 104);
-            lblMotif.Name = "lblMotif";
-            lblMotif.Size = new Size(36, 15);
-            lblMotif.TabIndex = 2;
-            lblMotif.Text = "Motif";
-            // 
-            // panelPraticien
-            // 
-            panelPraticien.Controls.Add(lblSpecialite);
-            panelPraticien.Controls.Add(lblType);
-            panelPraticien.Controls.Add(lblEmail);
-            panelPraticien.Controls.Add(lblTelephone);
-            panelPraticien.Controls.Add(lblRue);
-            panelPraticien.Controls.Add(lblPraticien);
-            panelPraticien.Location = new Point(243, 33);
-            panelPraticien.Name = "panelPraticien";
-            panelPraticien.Size = new Size(525, 68);
-            panelPraticien.TabIndex = 1;
-            // 
-            // lblSpecialite
-            // 
-            lblSpecialite.Location = new Point(265, 27);
-            lblSpecialite.Name = "lblSpecialite";
-            lblSpecialite.Size = new Size(100, 23);
-            lblSpecialite.TabIndex = 5;
-            lblSpecialite.Text = "label1";
-            // 
-            // lblType
-            // 
-            lblType.Location = new Point(265, 5);
-            lblType.Name = "lblType";
-            lblType.Size = new Size(100, 23);
-            lblType.TabIndex = 4;
-            lblType.Text = "label1";
-            // 
-            // lblEmail
-            // 
-            lblEmail.Location = new Point(21, 50);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(38, 15);
-            lblEmail.TabIndex = 3;
-            lblEmail.Text = "label1";
-            // 
-            // lblTelephone
-            // 
-            lblTelephone.Location = new Point(21, 35);
-            lblTelephone.Name = "lblTelephone";
-            lblTelephone.Size = new Size(38, 15);
-            lblTelephone.TabIndex = 2;
-            lblTelephone.Text = "label1";
-            // 
-            // lblRue
-            // 
-            lblRue.Location = new Point(21, 20);
-            lblRue.Name = "lblRue";
-            lblRue.Size = new Size(38, 15);
-            lblRue.TabIndex = 1;
-            lblRue.Text = "label1";
-            // 
-            // lblPraticien
-            // 
-            lblPraticien.Location = new Point(21, 5);
-            lblPraticien.Name = "lblPraticien";
-            lblPraticien.Size = new Size(38, 15);
-            lblPraticien.TabIndex = 0;
-            lblPraticien.Text = "label1";
-            // 
+            panelCentral.Controls.Add(dgvVisites);
+            panelCentral.Controls.Add(panelDetail);
+
             // dgvVisites
-            // 
-            dgvVisites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVisites.Location = new Point(12, 21);
+            dgvVisites.Location = new Point(12, 10);
             dgvVisites.Name = "dgvVisites";
-            dgvVisites.RowHeadersWidth = 50;
-            dgvVisites.Size = new Size(216, 267);
+            dgvVisites.Size = new Size(280, 500);
             dgvVisites.TabIndex = 0;
-            // 
+            dgvVisites.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVisites.RowHeadersWidth = 50;
+            dgvVisites.SelectionChanged += dgvVisites_SelectionChanged;
+
+            // panelDetail
+            panelDetail.Location = new Point(305, 10);
+            panelDetail.Name = "panelDetail";
+            panelDetail.Size = new Size(780, 530);
+            panelDetail.TabIndex = 1;
+            panelDetail.Controls.Add(panelPraticien);
+            panelDetail.Controls.Add(lblMotif);
+            panelDetail.Controls.Add(lblBilan);
+            panelDetail.Controls.Add(lblBilanContenu);
+            panelDetail.Controls.Add(dgvEchantillon);
+            panelDetail.Controls.Add(lstMedicament);
+
+            // panelPraticien
+            panelPraticien.BorderStyle = BorderStyle.FixedSingle;
+            panelPraticien.Location = new Point(0, 0);
+            panelPraticien.Name = "panelPraticien";
+            panelPraticien.Size = new Size(760, 110);
+            panelPraticien.TabIndex = 0;
+            panelPraticien.Controls.Add(lblPraticien);
+            panelPraticien.Controls.Add(lblRue);
+            panelPraticien.Controls.Add(lblTelephone);
+            panelPraticien.Controls.Add(lblEmail);
+            panelPraticien.Controls.Add(lblType);
+            panelPraticien.Controls.Add(lblSpecialite);
+
+            // lblPraticien
+            lblPraticien.Location = new Point(10, 8);
+            lblPraticien.Size = new Size(280, 20);
+            lblPraticien.Name = "lblPraticien";
+
+            // lblRue
+            lblRue.Location = new Point(10, 32);
+            lblRue.Size = new Size(350, 20);
+            lblRue.Name = "lblRue";
+
+            // lblTelephone
+            lblTelephone.Location = new Point(10, 56);
+            lblTelephone.Size = new Size(250, 20);
+            lblTelephone.Name = "lblTelephone";
+
+            // lblEmail
+            lblEmail.Location = new Point(10, 80);
+            lblEmail.Size = new Size(280, 20);
+            lblEmail.Name = "lblEmail";
+
+            // lblType
+            lblType.Location = new Point(420, 8);
+            lblType.Size = new Size(300, 20);
+            lblType.Name = "lblType";
+
+            // lblSpecialite
+            lblSpecialite.Location = new Point(420, 32);
+            lblSpecialite.Size = new Size(300, 40);
+            lblSpecialite.Name = "lblSpecialite";
+
+            // lblMotif
+            lblMotif.Text = "Motif";
+            lblMotif.Location = new Point(0, 125);
+            lblMotif.Size = new Size(380, 20);
+            lblMotif.Name = "lblMotif";
+
+            // lblBilan (titre)
+            lblBilan.Text = "Bilan de la visite";
+            lblBilan.Location = new Point(0, 152);
+            lblBilan.Size = new Size(150, 20);
+            lblBilan.Name = "lblBilan";
+
+            // lblBilanContenu
+            lblBilanContenu.Location = new Point(0, 175);
+            lblBilanContenu.Size = new Size(380, 130);
+            lblBilanContenu.Name = "lblBilanContenu";
+            lblBilanContenu.BorderStyle = BorderStyle.FixedSingle;
+
+            // dgvEchantillon
+            dgvEchantillon.Location = new Point(420, 125);
+            dgvEchantillon.Size = new Size(330, 180);
+            dgvEchantillon.Name = "dgvEchantillon";
+            dgvEchantillon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEchantillon.TabIndex = 4;
+
+            // lstMedicament
+            lstMedicament.Location = new Point(0, 320);
+            lstMedicament.Size = new Size(180, 120);
+            lstMedicament.Name = "lstMedicament";
+            lstMedicament.TabIndex = 5;
+
             // FrmConsultationVisite
-            // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1130, 680);
             Controls.Add(panelCentral);
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             Location = new Point(0, 0);
             Name = "FrmConsultationVisite";
-            Text = "Form1";
+            Text = "Consultation des visites";
             Load += FrmConsultationVisite_Load;
             Controls.SetChildIndex(lblTitre, 0);
             Controls.SetChildIndex(panelCentral, 0);
-            panelCentral.ResumeLayout(false);
-            panelCentral.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEchantillon).EndInit();
+
             panelPraticien.ResumeLayout(false);
+            panelDetail.ResumeLayout(false);
+            panelCentral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvVisites).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEchantillon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
-        #endregion
-
         private Panel panelCentral;
+        private Panel panelDetail;
         private DataGridView dgvVisites;
         private Panel panelPraticien;
-        private Label lblTelephone;
-        private Label lblRue;
         private Label lblPraticien;
+        private Label lblRue;
+        private Label lblTelephone;
         private Label lblEmail;
-        private Label lblBilan;
-        private Label lblMotif;
-        private Label lblSpecialite;
         private Label lblType;
-        private ListBox lstMedicament;
+        private Label lblSpecialite;
+        private Label lblMotif;
+        private Label lblBilan;
+        private Label lblBilanContenu;
         private DataGridView dgvEchantillon;
+        private ListBox lstMedicament;
     }
 }
